@@ -19,29 +19,28 @@ export const HomePage = () => {
     const handleShow = () => setShowModal(true);
 
     const [showModal, setShowModal] = useState(false);
-    const [Fdept,setFdept] = useState('none');
-    const [Fname,setFname] = useState('');
-    const [Fdescription,setFdescription] = useState('');
-    const [Fprice,setFprice] = useState('');
-    const [Fstock,setFstock] = useState('');
-    const [Fsku,setFsku] = useState('');
-    const [Fsupplier,setFsupplier] = useState('');
-    const [Fdelivered,setFdelivered] = useState(0);
-    const [FimageURL,setFimageURL] = useState('');
-
+    const [Fgenre,setFgenre] = useState('none');
+    const [Ftitle,setFtitle] = useState('');
+    const [Fyear,setFyear] = useState('');
+    const [Frating,setFrating] = useState('');
+    const [Fdirector,setFdirector] = useState('');
+    const [Fcast,setFcast] = useState('');
+    const [Fwriter,setFwriter] = useState('');
+    const [Fsummary,setFsummary] = useState('');
+    const [FimageURL,setFimageURL] = useState('')
     const addMovie = () => {
 
         dispatch({type:"addMovie",payload:{
           id: uuid(),
-          department:Fdept,
-          name: Fname,
-          description:
-          Fdescription,
-          price:Number(Fprice),
-          stock: Number(Fstock),
-          sku:Number(Fsku),
-          supplier: Fsupplier,
-          delivered: Fdelivered,
+          genre:Fgenre,
+          title: Ftitle,
+          year:
+          Fyear,
+          rating:Number(Frating),
+          director:Fdirector,
+          cast:Fcast,
+          writer: Fwriter,
+          summary: Fsummary,
           imageUrl: FimageURL,
         }})
         setShowModal(false)
@@ -189,70 +188,68 @@ export const HomePage = () => {
         </Modal.Header>
         <Form >
         <Modal.Body>        
-        {/* <InputGroup className="mb-3">
+        <InputGroup className="mb-3">
         <DropdownButton
           variant="outline-secondary"
           title="Dropdown"
           id="input-group-dropdown-1"
         >
-          {Departments.map((dep)=><Dropdown.Item key={dep} onClick={()=>setFdept(dep)} >{dep}</Dropdown.Item>)}
+          {genrearr.map((gen)=><Dropdown.Item key={gen} onClick={()=>setFgenre(gen)} >{gen}</Dropdown.Item>)}
         </DropdownButton>
-        <Form.Control aria-label="dropdown button" type = 'text' disabled placeholder={`${Fdept}`}  />
+        <Form.Control aria-label="dropdown button" type = 'text' disabled placeholder={`${Fgenre}`}  />
         
-      </InputGroup> */}
+      </InputGroup>
       {/* <Form.Control  type = 'text' placeholder={`${department}`}  /> */}
 
-      <Form.Label htmlFor="name">Name</Form.Label>
+      <Form.Label htmlFor="title">title</Form.Label>
       <Form.Control 
-        value={Fname}
-        onChange={(e)=>setFname(e.target.value)}
+        value={Ftitle}
+        onChange={(e)=>setFtitle(e.target.value)}
         type="text"
-        id="name"
+        id="title"
       />
-      <Form.Label htmlFor="Description">Description</Form.Label>
+      <Form.Label htmlFor="year">year</Form.Label>
       <Form.Control
-        value={Fdescription}
-        onChange={(e)=>setFdescription(e.target.value)}
-        type="text"
-        id="Description"
-      />
-      <Form.Label htmlFor="Price">Price</Form.Label>
-      <Form.Control
-        value={Fprice}
-        onChange={(e)=>setFprice(e.target.value)}
+        value={Fyear}
+        onChange={(e)=>setFyear(e.target.value)}
         type="number"
-        id="Price"
+        id="year"
+      />
+      <Form.Label htmlFor="rating">rating</Form.Label>
+      <Form.Control
+        value={Frating}
+        onChange={(e)=>setFrating(e.target.value)}
+        type="number"
+        id="rating"
         aria-describedby="passwordHelpBlock"
       />
-      <Form.Label htmlFor="Stock">Stock</Form.Label>
+      <Form.Label htmlFor="Stock">director</Form.Label>
       <Form.Control
-        value={Fstock}
-        onChange={(e)=>setFstock(e.target.value)}
-        type="number"
-        id="Stock"
-      />
-      <Form.Label htmlFor="SKU">SKU</Form.Label>
-      <Form.Control
-        value={Fsku}
-        onChange={(e)=>setFsku(e.target.value)}
-        type="number"
-        id="SKU"
-      />
-      <Form.Label htmlFor="Supplier">Supplier</Form.Label>
-      <Form.Control
-        value={Fsupplier}
-        onChange={(e)=>setFsupplier(e.target.value)}
+        value={Fdirector}
+        onChange={(e)=>setFdirector(e.target.value)}
         type="text"
-        id="Supplier"
+        id="director"
       />
-      <Form.Label htmlFor="Delivered">Delivered</Form.Label>
+      <Form.Label htmlFor="cast">cast</Form.Label>
       <Form.Control
-        value={Fdelivered}
-        onChange={(e)=>setFdelivered(e.target.value)}
-        placeholder="0"
-        type="number"
-        id="Delivered"
-        disabled
+        value={Fcast}
+        onChange={(e)=>{setFcast(e.target.value)}}
+        type="text"
+        id="cast"
+      />
+      <Form.Label htmlFor="writer">writer</Form.Label>
+      <Form.Control
+        value={Fwriter}
+        onChange={(e)=>setFwriter(e.target.value)}
+        type="text"
+        id="writer"
+      />
+      <Form.Label htmlFor="summary">summary</Form.Label>
+      <Form.Control
+        value={Fsummary}
+        onChange={(e)=>setFsummary(e.target.value)}
+        type="text"
+        id="summary"
       />
       <Form.Label htmlFor="ImageURL">ImageURL</Form.Label>
       <Form.Control
