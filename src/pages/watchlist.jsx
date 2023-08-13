@@ -36,7 +36,7 @@ export const WatchlistPage = () =>{
             <div className="movie-listing">
                 {watchlist?.map((mov)=>{
                     return(
-                        <Card className="card" style={{ width: '18rem', cursor:'pointer' }}>
+                        <Card className="card" style={{ width: '18rem', cursor:'pointer' }} key={mov.id}>
                         <Card.Img variant="top" src={`${mov.imageURL}`} />
                         <Card.Body>
                           <Card.Title>{mov.title}</Card.Title>

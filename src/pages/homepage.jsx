@@ -31,7 +31,7 @@ export const HomePage = () =>{
             <div className="movie-listing">
                 {movies.map((mov)=>{
                     return(
-                        <Card className="card" style={{ width: '18rem', cursor:'pointer' }} onClick={()=>{navigate(`/${mov.id}`)}} >
+                        <Card className="card" style={{ width: '18rem', cursor:'pointer' }} onClick={()=>{navigate(`/${mov.id}`)}} key={mov.id}>
                         <Card.Img variant="top" src={`${mov.imageURL}`} />
                         <Card.Body>
                           <Card.Title >{mov.title}</Card.Title>
