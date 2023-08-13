@@ -1,4 +1,4 @@
-import React from "react";
+import {React,useState }from "react";
 import { useData } from "../context/data-context";
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -6,7 +6,29 @@ import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import "./homepage.css";
 
+import Modal from 'react-bootstrap/Modal';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+
 export const HomePage = () => {
+
+    const handleClose = () => {setShowModal(false)};
+    const handleShow = () => setShowModal(true);
+
+    const [showModal, setShowModal] = useState(false);
+    const [Fdept,setFdept] = useState('none');
+    const [Fname,setFname] = useState('');
+    const [Fdescription,setFdescription] = useState('');
+    const [Fprice,setFprice] = useState('');
+    const [Fstock,setFstock] = useState('');
+    const [Fsku,setFsku] = useState('');
+    const [Fsupplier,setFsupplier] = useState('');
+    const [Fdelivered,setFdelivered] = useState(0);
+    const [FimageURL,setFimageURL] = useState('');
+
+
+
   const { movies, dispatch, starred, watchlist, genre, star, year,search } = useData();
   const genrearr = [
     "all genre",
@@ -91,7 +113,7 @@ export const HomePage = () => {
             {yeararr.map((year)=><Dropdown.Item key={year} onClick={()=>dispatch({type:"year",payload:year})} >{year}</Dropdown.Item>)}
           </Dropdown.Menu>
         </Dropdown>
-        <Button variant="primary">Add New Movie</Button>
+        <Button variant="primary" onClick={handleShow}>Add New Movie</Button>
       </div>
       <div className="movie-listing">
         {yearfilter.map((mov) => {
@@ -140,6 +162,100 @@ export const HomePage = () => {
           );
         })}
       </div>
+       {/* Add New Product Modal Modal  */}
+       <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Movie</Modal.Title>
+        </Modal.Header>
+        <Form >
+        <Modal.Body>        
+        {/* <InputGroup className="mb-3">
+        <DropdownButton
+          variant="outline-secondary"
+          title="Dropdown"
+          id="input-group-dropdown-1"
+        >
+          {Departments.map((dep)=><Dropdown.Item key={dep} onClick={()=>setFdept(dep)} >{dep}</Dropdown.Item>)}
+        </DropdownButton>
+        <Form.Control aria-label="dropdown button" type = 'text' disabled placeholder={`${Fdept}`}  />
+        
+      </InputGroup> */}
+      {/* <Form.Control  type = 'text' placeholder={`${department}`}  /> */}
+
+      <Form.Label htmlFor="name">Name</Form.Label>
+      <Form.Control 
+        value={Fname}
+        onChange={(e)=>setFname(e.target.value)}
+        type="text"
+        id="name"
+      />
+      <Form.Label htmlFor="Description">Description</Form.Label>
+      <Form.Control
+        value={Fdescription}
+        onChange={(e)=>setFdescription(e.target.value)}
+        type="text"
+        id="Description"
+      />
+      <Form.Label htmlFor="Price">Price</Form.Label>
+      <Form.Control
+        value={Fprice}
+        onChange={(e)=>setFprice(e.target.value)}
+        type="number"
+        id="Price"
+        aria-describedby="passwordHelpBlock"
+      />
+      <Form.Label htmlFor="Stock">Stock</Form.Label>
+      <Form.Control
+        value={Fstock}
+        onChange={(e)=>setFstock(e.target.value)}
+        type="number"
+        id="Stock"
+      />
+      <Form.Label htmlFor="SKU">SKU</Form.Label>
+      <Form.Control
+        value={Fsku}
+        onChange={(e)=>setFsku(e.target.value)}
+        type="number"
+        id="SKU"
+      />
+      <Form.Label htmlFor="Supplier">Supplier</Form.Label>
+      <Form.Control
+        value={Fsupplier}
+        onChange={(e)=>setFsupplier(e.target.value)}
+        type="text"
+        id="Supplier"
+      />
+      <Form.Label htmlFor="Delivered">Delivered</Form.Label>
+      <Form.Control
+        value={Fdelivered}
+        onChange={(e)=>setFdelivered(e.target.value)}
+        placeholder="0"
+        type="number"
+        id="Delivered"
+        disabled
+      />
+      <Form.Label htmlFor="ImageURL">ImageURL</Form.Label>
+      <Form.Control
+        value={FimageURL}
+        onChange={(e)=>setFimageURL(e.target.value)}
+        type="text"
+        id="ImageURL"
+      />
+
+
+            
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" >
+            Add Movie
+          </Button>
+          
+        </Modal.Footer>
+        </Form>
+      </Modal>
     </div>
   );
 };
