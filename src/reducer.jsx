@@ -2,9 +2,9 @@ export const Reducer = (state,{type,payload}) =>{
 
     switch(type){
                  
-            case "addProduct":
+            case "addMovie":
             return{
-                ...state, Data:[...state.Data,payload]
+                ...state, movies:[...state.movies,payload]
             };
             case "AddtoStarred":
             return{

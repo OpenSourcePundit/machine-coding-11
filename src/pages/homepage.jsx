@@ -1,4 +1,6 @@
 import {React,useState }from "react";
+import { v4 as uuid } from 'uuid';
+
 import { useData } from "../context/data-context";
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -26,6 +28,24 @@ export const HomePage = () => {
     const [Fsupplier,setFsupplier] = useState('');
     const [Fdelivered,setFdelivered] = useState(0);
     const [FimageURL,setFimageURL] = useState('');
+
+    const addMovie = () => {
+
+        dispatch({type:"addMovie",payload:{
+          id: uuid(),
+          department:Fdept,
+          name: Fname,
+          description:
+          Fdescription,
+          price:Number(Fprice),
+          stock: Number(Fstock),
+          sku:Number(Fsku),
+          supplier: Fsupplier,
+          delivered: Fdelivered,
+          imageUrl: FimageURL,
+        }})
+        setShowModal(false)
+      }
 
 
 
@@ -249,7 +269,7 @@ export const HomePage = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" >
+          <Button variant="primary" onClick={addMovie} >
             Add Movie
           </Button>
           
