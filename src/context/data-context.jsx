@@ -163,6 +163,11 @@ export const DataProvider = ({children}) =>{
           ],
           watchlist:[],
           starred:[],
+          genre:'all genre',
+          star:'all rating',
+          year:'all time',
+          search:''
+
     }
 
     const [state,dispatch] = useReducer(Reducer,initialState)
@@ -178,7 +183,11 @@ export const DataProvider = ({children}) =>{
             movies:state.movies,
             watchlist:state.watchlist,            
             dispatch:dispatch,
+            genre:state.genre,
             starred:state.starred,
+            star:state.star,
+            year:state.year,
+            search:state.search,
             // sortBy:state.sortBy
           }}
         >

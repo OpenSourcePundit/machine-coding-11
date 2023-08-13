@@ -1,6 +1,7 @@
 
 .top-section{
     display: flex;
+    justify-content: space-between;
 }
 .movie-card{
     display: flex;

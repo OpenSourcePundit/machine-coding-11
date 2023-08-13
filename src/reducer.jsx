@@ -1,12 +1,7 @@
 export const Reducer = (state,{type,payload}) =>{
 
     switch(type){
-            case "Sort":
-            //return  {...state, category:{...state.category,  payload}};
-            console.log("red",payload)
-            return  {
-                ...state,sortBy:payload
-            };      
+                 
             case "addProduct":
             return{
                 ...state, Data:[...state.Data,payload]
@@ -29,6 +24,26 @@ export const Reducer = (state,{type,payload}) =>{
             return{
                 ...state, watchlist:[...newlist]
             };
+            case "genre":
+            return  {
+                ...state,genre:payload
+            }; 
+            case "star":
+            //return  {...state, category:{...state.category,  payload}};
+            console.log("redstar",payload)
+            return  {
+                ...state,star:payload
+            }; 
+            case "year":
+            //return  {...state, category:{...state.category,  payload}};
+            console.log("redyear",payload)
+            return  {
+                ...state,year:payload
+            }; 
+            case "HandleSearch":
+        return{
+            ...state,search:payload
+        }
             
             default: 
             return state;

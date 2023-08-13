@@ -5,10 +5,16 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
+import { useData } from '../context/data-context';
 import "./navbar.css";
 
 export const NavBar = () => {
     const navigate = useNavigate();
+    const {dispatch} = useData();
+    const handleSearch = (value) => {
+        navigate("/");
+        dispatch({ type: "HandleSearch", payload: value });
+      };
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -29,7 +35,9 @@ export const NavBar = () => {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
-              onChange = {(e)=>console.log(e.target.value)}
+              onChange={(e) => {
+                handleSearch(e.target.value);
+              }}
             />
             {/* <Button variant="outline-success">Search</Button> */}
           </Form>
