@@ -1,0 +1,25 @@
+
+.top-section{
+    display: flex;
+}
+
+
+
+
+Img{
+    width: 50px;
+    height: 200px;
+}
+.card{
+    padding: px;
+    margin: 20px;
+}
+
+.movie-listing{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-buttons{
+    display: flex;
+    justify-content: space-between;
+}

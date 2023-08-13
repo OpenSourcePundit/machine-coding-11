@@ -1,0 +1,30 @@
+
+.top-section{
+    display: flex;
+}
+.movie-card{
+    display: flex;
+}
+.main-section{
+    height: 100%;
+}
+
+
+
+Img{
+    width: 500px;
+    height: 90%;
+}
+.card{
+    padding: px;
+    margin: 20px;
+}
+
+.movie-listing{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-buttons{
+    display: flex;
+    justify-content: space-between;
+}
